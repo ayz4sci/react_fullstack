@@ -1,14 +1,18 @@
 import * as dispatcher from '../dispatcher';
 import * as actions from '../actions/ActionTypes';
+import * as helper from './../helpers/RestHelper'
 
 const GroceryItemStore = () => {
-    const items = [
-        { name: "Ice cream" },
-        { name: "Waffles" },
-        { name: "Candy", purchased: true },
-        { name: "Snarks" },
-    ];
-    
+    let items = [];
+
+    helper.get("/api/items")
+    .then(data => {
+        items = data;
+        triggerListeners();
+    }).catch(e =>{
+        console.log(e);
+    });
+
     const listeners = [];
 
     const getItems = () => items
