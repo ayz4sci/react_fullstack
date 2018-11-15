@@ -1,19 +1,17 @@
-
 module.exports = (app) => {
 
-    const items = [
-        { name: "Ice cream" },
-        { name: "Waffles" },
-        { name: "Candy", purchased: true },
-        { name: "Snarks" },
-    ];
+    const GroceryItem = require('../models/GroceryItem');
 
     app.route('/api/items')
     .get( (req, res) =>{
-        res.send(items);
+        GroceryItem.find((error, items) => {
+            res.send(items );
+        })
     })
     .post((req, res) => {
         const item = req.body;
-        items.push(item);
+        new GroceryItem(item).save((err, doc) => {
+            res.status(300).send();
+        })
     })
 }
