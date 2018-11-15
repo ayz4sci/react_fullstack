@@ -21,7 +21,6 @@ const GroceryItemStore = () => {
 
     const onDismount = (listener) => listeners.pop(listener);
 
-
     const triggerListeners = () => {
         listeners.forEach( listener => {
             listener(items);
@@ -31,6 +30,8 @@ const GroceryItemStore = () => {
     const addGroceryItem = (item) => {
         items.push(item);
         triggerListeners();
+
+        helper.post("api/items", item);
     }
 
     const deleteGroceryItem = (item) => {

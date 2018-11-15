@@ -12,4 +12,8 @@ module.exports = (app) => {
     .get( (req, res) =>{
         res.send(items);
     })
+    .post((req, res) => {
+        const item = req.body;
+        items.push(item);
+    })
 }

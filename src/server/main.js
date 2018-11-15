@@ -5,7 +5,7 @@ const app = new express();
 const port = process.env.PORT || 7777;
 
 app.get('/', (req, res) => {
-    res.render('./../app/index.js', {})
+    res.render('./../app/index.html', {})
 })
 .use(express.static(__dirname +'./../app/'))
 .listen(port, () => console.log(`Listening on port ${port}`))

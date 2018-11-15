@@ -6,7 +6,19 @@ export const get = (url) => {
             url: url,
             dataType: "json",
             success: success,
-            error:error
+            error: error
+        })
+    })
+}
+
+export const post = (url, data) => {
+    return new Promise( (success, error) => {
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            success: success,
+            error: error
         })
     })
 }
