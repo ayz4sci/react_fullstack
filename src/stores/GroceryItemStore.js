@@ -37,6 +37,8 @@ const GroceryItemStore = () => {
     const deleteGroceryItem = (item) => {
         items.pop(item);
         triggerListeners();
+
+        helper.del(`api/items/:${item._id}`);
     }
 
     const setGroceryItemBought = (item, isBought) => {
@@ -46,6 +48,8 @@ const GroceryItemStore = () => {
             }
         })
         triggerListeners();
+
+        helper.patch(`api/items/:${item._id}`, item);
     }
 
     dispatcher.register( event => {

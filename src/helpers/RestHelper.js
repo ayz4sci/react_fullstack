@@ -22,3 +22,26 @@ export const post = (url, data) => {
         })
     })
 }
+
+export const patch = (url, data) => {
+    return new Promise( (success, error) => {
+        $.ajax({
+            url: url,
+            type: "PATCH",
+            data: data,
+            success: success,
+            error: error
+        })
+    })
+}
+
+export const del = (url) => {
+    return new Promise( (success, error) => {
+        $.ajax({
+            url: url,
+            type: "DELETE",
+            success: success,
+            error: error
+        })
+    })
+}
