@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
     });
 })
 .listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on http://localhost:${port}`);
 })
 
 app.use(express.static(path.resolve(__dirname, '../build')));
