@@ -13,7 +13,7 @@ const port = 7777;
 
 app.get('/', (req, res) => {
     // point to the html file created by CRA's build tool
-    const filePath = path.resolve(__dirname, '../public/index.html');
+    const filePath = path.resolve(__dirname, '../build/index.html');
     // const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
 
     fs.readFile(filePath, 'utf8', (err, htmlData) => {
@@ -22,22 +22,14 @@ app.get('/', (req, res) => {
             return res.status(404).end()
         }
 
-        // render the app as a string
-        const html = ReactDOMServer.renderToString(<App />);
-
-        // inject the rendered app into our html and send it
-        return res.send(
-            htmlData.replace(
-                '<div id="root"></div>',
-                `<div id="root">${html}</div>`
-            )
-        );
+        return res.sendFile(filePath);
     });
 })
 .listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
 
+app.use(express.static(path.resolve(__dirname, '../build')));
 app.use(parser.json());
 app.use(parser.urlencoded({extended:false}));
 

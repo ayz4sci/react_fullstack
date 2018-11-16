@@ -21,14 +21,11 @@
     "skeleton-css": "^2.0.4"
   },
   "scripts": {
-    "start_frontend": "react-scripts start",
-    "start_api": "nodemon server/bootstrap.js",
-    "start": "concurrently --kill-others-on-fail \"yarn start_api\" \"yarn start_frontend\"",
+    "start": "nodemon server/bootstrap.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:7777/",
   "eslintConfig": {
     "extends": "react-app"
   },
