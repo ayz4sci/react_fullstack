@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const GroceryItem = require('./models/GroceryItem');
+import mongoose from 'mongoose';
+import GroceryItem from './models/GroceryItem';
 
 mongoose.connect('mongodb://localhost/grocery', () => {
     console.log('connected.');
