@@ -5,7 +5,7 @@ module.exports = (app) => {
     app.route('/api/items')
     .get( (req, res) =>{
         GroceryItem.find((error, items) => {
-            res.send(items );
+            res.send(items);
         })
     })
     .post((req, res) => {
@@ -17,9 +17,7 @@ module.exports = (app) => {
 
     app.route('/api/items/:id')
     .delete( (req, res) =>{
-        GroceryItem.findOneAndRemove({ 
-            _id: req.params.id
-        });
+        GroceryItem.findByIdAndDelete(req.params.id);
     })
     .patch((req, res) => {
         GroceryItem.findOne({
